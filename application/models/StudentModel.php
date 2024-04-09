@@ -16,4 +16,23 @@ class StudentModel extends CI_Model
             'name' => 'melvin'
         ]
     ];
+
+    //test
+    public function student_data()
+    {
+        $class = $this->load_class();
+        $data = [
+            'name' => 'Prince',
+            'sex' => 'male',
+            'department' => 'computer science',
+            'class' => $class,
+        ];
+
+        return $data;
+    }
+
+    private function load_class()
+    {
+        return "300L";
+    }
 }
