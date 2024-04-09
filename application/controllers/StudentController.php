@@ -3,37 +3,25 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class StudentController extends CI_Controller
 {
-    public $students = [
-        [
-            "id" => 1,
-            'name' => 'prince ojoi'
-        ],
-        [
-            "id" => 2,
-            'name' => 'mercy'
-        ],
-        [
-            "id" => 3,
-            'name' => 'melvin'
-        ]
-    ];
+    public function __construct()
+    {
+        parent::__construct();
+        // load the model
+        $this->load->model('StudentModel', 'stdm');
+    }
+    public function index($id = null)
+    {
+        if ($id) {
+
+            $this->show($id);
+        }
+        //get students data
+        $students = $this->stdm->getStudents();
+        $this->load->view('partials/head');
+        $this->load->view('students/index', ['students' => $students]);
+        $this->load->view('partials/footer');
+    }
 }
 
- //test
- public function student_data()
- {
-     $class = $this->load_class();
-     $data = [
-         'name' => 'Prince',
-         'sex' => 'male',
-         'department' => 'computer science',
-         'class' => $class,
-     ];
 
-     return $data;
- }
- private function load_class()
- {
-     return "300L";
- }
 
