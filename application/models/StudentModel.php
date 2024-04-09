@@ -42,4 +42,15 @@ class StudentModel extends CI_Model
         return $this->students;
     }
 
+    // get one student
+    public function getStudent($id)
+    {
+        if ($id != null) {
+            foreach ($this->students as $student) {
+                if ($student['id'] == $id)
+                    return $student;
+            }
+        }
+        return [];
+    }
 }
