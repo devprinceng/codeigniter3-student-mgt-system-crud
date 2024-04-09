@@ -35,4 +35,11 @@ class StudentModel extends CI_Model
     {
         return "300L";
     }
+
+    // added method to return students from our students array
+    public function getStudents()
+    {
+        return $this->students;
+    }
+
 }
