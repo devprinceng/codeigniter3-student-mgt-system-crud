@@ -21,6 +21,14 @@ class StudentController extends CI_Controller
         $this->load->view('students/index', ['students' => $students]);
         $this->load->view('partials/footer');
     }
+
+    public function show($id)
+    {
+        $student = $this->stdm->getStudent($id);
+        $this->load->view('partials/head');
+        $this->load->view('students/index', ['student' => $student]);
+        $this->load->view('partials/footer');
+    }
 }
 
 
