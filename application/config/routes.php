@@ -53,5 +53,6 @@ $route['default_controller'] = 'welcome';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
+$route['students/add'] = 'StudentController/add';
 $route['students/(:any)'] = 'StudentController/show/$1';
 $route['students'] = 'StudentController/index';

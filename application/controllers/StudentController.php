@@ -12,24 +12,28 @@ class StudentController extends CI_Controller
     public function index($id = null)
     {
         if ($id) {
-
             $this->show($id);
         }
         //get students data
         $students = $this->stdm->getStudents();
-        $this->load->view('partials/head');
-        $this->load->view('students/index', ['students' => $students]);
-        $this->load->view('partials/footer');
+        $this->loadview("Students", 'students/index', ['students' => $students]);
     }
 
     public function show($id)
     {
         $student = $this->stdm->getStudent($id);
-        $this->load->view('partials/head');
-        $this->load->view('students/index', ['student' => $student]);
+        $this->loadview('student', 'students/index', ['student' => $student]);
+    }
+
+    public function loadview($title, $view, array $data = [])
+    {
+        $this->load->view('partials/head', ['title' => $title]);
+        $this->load->view($view, $data);
         $this->load->view('partials/footer');
     }
+
+    public function add()
+    {
+        $this->loadview("Add Students", "students/add");
+    }
 }
-
-
-
