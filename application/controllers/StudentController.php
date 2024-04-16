@@ -36,4 +36,22 @@ class StudentController extends CI_Controller
     {
         $this->loadview("Add Students", "students/add");
     }
+
+    public function save()
+    {
+        // $this->load->library('input');
+        // $name = $this->input->input_stream('name');
+        $name = $this->input->input_stream('name');
+        $regno = $this->input->post('regno');
+        $department = $this->input->post('department');
+        $phone = $this->input->post('phone');
+
+        $data = [
+            'message' => 'Registration Successful',
+            'name' => $name,
+            'phone' => $phone
+        ];
+
+        $this->loadview('registration successful', 'students/success', ['data' => $data]);
+    }
 }
